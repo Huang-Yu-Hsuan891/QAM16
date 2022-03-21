@@ -70,9 +70,10 @@ int main()
     int *recieve_a;
     recieve_a = (int *)malloc(alen * sizeof(int));
 
-    double ebn0s = 19;
+    double ebn0s = 13;
     double sigma;
-    sigma = sqrt(5.0 / (pow(10, ebn0s / 10)));
+    //sigma = sqrt(5.0 / (pow(10, ebn0s / 10)));
+    sigma = sqrt(1.25 / (pow(10, ebn0s / 10)));
     printf("%g,%g \n", pow(10, ebn0s / 10), sigma);
 
     double error_bit;
@@ -129,7 +130,7 @@ int main()
     BER = error_bit / (num * 1000);
     printf("BER = %g \n", BER);
     FILE *outfp3; 
-        outfp3 = fopen("QAM16_SNR_1.txt","a");
+        outfp3 = fopen("QAM16_SNR_change_sigma.txt","a");
         fprintf(outfp3,"SNR = %g ; BER = %g \n", ebn0s, BER);
     fclose(outfp3);
     return 0;
