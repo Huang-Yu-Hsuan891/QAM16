@@ -70,6 +70,8 @@ int main()
     int *recieve_a;
     recieve_a = (int *)malloc(alen * sizeof(int));
 
+
+
     double ebn0s = 13;
     double sigma;
     //sigma = sqrt(5.0 / (pow(10, ebn0s / 10)));
@@ -93,35 +95,35 @@ int main()
         for (i = 0; i < symrow; i++)
             for (j = 0; j < symcolumn; j++) {
                 sym[i][j] = a[4 * i + j];
-                if (i == 0 || i == 10)
-                    printf("sym[%d][%d] = %d; ", i, j, sym[i][j]);
+                //if (i == 0 || i == 10)
+                //    printf("sym[%d][%d] = %d; ", i, j, sym[i][j]);
             }
         for (i = 0; i < srow; i++)
             table_symbol(i, sym[i][0], sym[i][1], sym[i][2], sym[i][3]);
-        for (i = 0; i < srow; i++)
+        /*for (i = 0; i < srow; i++)
             for (j = 0; j < scolumn; j++)
                 if (i == 0 || i == 10)
-                    printf("s[%d][%d] = %g\n", i, j, s[i][j]);
+                    printf("s[%d][%d] = %g\n", i, j, s[i][j]);*/
         for(i = 0; i < srow; i++) {
             normal(sigma, &x, &y);
             x_receive[i][0] = s[i][0] + x;
             x_receive[i][1] = s[i][1] + y;
         }
-        for (i = 0; i < xrow; i++)
+        /*for (i = 0; i < xrow; i++)
             for (j = 0; j < xcolumn; j++)
                 if (i == 0 || i == 10)
-                    printf("x_receive[%d][%d] = %g\n", i, j, x_receive[i][j]);
+                    printf("x_receive[%d][%d] = %g\n", i, j, x_receive[i][j]);*/
         for (i = 0; i < xrow; i++) x_estimate_m(i,x_receive[i][0],x_receive[i][1]);
-        for (i = 0; i < mrow; i++)
+        /*for (i = 0; i < mrow; i++)
             for (j = 0; j < mcolumn; j++)
                 if (i == 0 || i == 10)
-                    printf("m_estimate[%d][%d] = %g\n", i, j,m_estimate[i][j]);
+                    printf("m_estimate[%d][%d] = %g\n", i, j,m_estimate[i][j]);*/
         for (i = 0; i < receivesymrow; i++) {
             table_receive(i, m_estimate[i][0],m_estimate[i][1]);
-            if ( i == 0 || i == 1) printf("receive_sym[%d]= %d %d %d %d\n",i,receive_sym[i][0],receive_sym[i][1],receive_sym[i][2],receive_sym[i][3]);
+            //if ( i == 0 || i == 1) printf("receive_sym[%d]= %d %d %d %d\n",i,receive_sym[i][0],receive_sym[i][1],receive_sym[i][2],receive_sym[i][3]);
         }
         for (i = 0; i < alen; i++) recieve_a[i] = receive_sym[i/4][i%4];
-        printf("receive_a = %d %d %d %d\n",recieve_a[4],recieve_a[5],recieve_a[6],recieve_a[7]);
+        //printf("receive_a = %d %d %d %d\n",recieve_a[4],recieve_a[5],recieve_a[6],recieve_a[7]);
         for (i = 0; i < alen; i++)
             if (a[i] != recieve_a[i]) error_bit++;
 
